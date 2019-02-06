@@ -1,0 +1,70 @@
+﻿
+@{
+
+
+    var viewDataRetiraEquipamentos = Session["retiradasequipamentosViewModel"] as List<BrainSystem.OS.MVC.ViewModels.RetiradaEquipamentosViewModel>;
+
+}
+
+
+@Styles.Render("~/bundles/assets/datatable")
+
+<div class="col-xs-12">
+
+    <div class="table-responsive" data-pattern="priority-columns">
+        <table id="tblRetiradaEquipamentos" class="table table-small-font table-hover-custom dt-responsive display">
+
+
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th style="display:none">IdProdutoFalhado</th>
+                    <th>Código</th>
+                    <th>Produto</th>
+                    <th>Número de Série</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var item in viewDataRetiraEquipamentos)
+                {
+                    <tr>
+                        @if (@ViewBag.EstadoControles != "disabled")
+                        {
+                            <td class="table-row" data-href="/CadastroPecasEqpto/DeleteRetiradaEquipamento/@item.Id">
+                                <i class="fa fa-trash"></i>
+                            </td>
+                        }
+                        else
+                        {
+
+                            <td></td>
+
+                        }
+                       
+                        <td style="display:none">@Html.DisplayFor(modelItem => item.IdProdutoFalhado)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdProduto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NumeroSerie)</td>
+                    </tr>
+
+
+                }
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div role="dialog" tabindex="-1" id="modCadastroRetiradaEquipamentos" class="modal fade">
+
+    </div>
+
+
+</div>
+
+@Scripts.Render("~/bundles/assets/datatable")

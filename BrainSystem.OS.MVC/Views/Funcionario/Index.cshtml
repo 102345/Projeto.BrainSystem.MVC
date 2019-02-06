@@ -1,0 +1,52 @@
+﻿@model BrainSystem.OS.MVC.ViewModels.FuncionarioViewModel
+<section id="main-content" class=" ">
+    <section class="wrapper" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class="page-title">
+                Atendimento
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Dados OS</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xs-2">Ordem servico Nr</div>
+                        <div class="col-xs-2">@ViewBag.OrdemServico</div>
+                        <div class="col-xs-2">Registrado em</div>
+                        <div class="col-xs-2">@ViewBag.DataChamado</div>
+                        <div class="col-xs-2">Protocolo chamado</div>
+                        <div class="col-xs-2">@ViewBag.NroChamado</div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Responsável Cliente</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        @*@Html.Partial("_Solicitante")*@
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+    </section>
+</section>

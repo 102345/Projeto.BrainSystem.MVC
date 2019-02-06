@@ -1,0 +1,90 @@
+﻿
+@model IEnumerable<BrainSystem.OS.MVC.ViewModels.ProdutosFalhadosViewModel>
+
+<section id="main-content" class=" ">
+    <section class="wrapper" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class="page-title">
+                Produtos Falhados
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Dados OS</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xs-2">Ordem servico Nr</div>
+                        <div class="col-xs-2">@ViewBag.OrdemServico</div>
+                        <div class="col-xs-2">Registrado em</div>
+                        <div class="col-xs-2">@ViewBag.DataChamado</div>
+                        <div class="col-xs-2">Protocolo chamado</div>
+                        <div class="col-xs-2">@ViewBag.NroChamado</div>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="btnRetornar" class="btn btn-success btn-icon bottom15 right15 pull-right" onclick="AbrirURL('/OrdemServico/Index')">
+                            <i class="fa fa-arrow-circle-left"></i> &nbsp; <span>Retornar</span>
+                        </button>
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Produtos Falhados</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        @*<button class="btn btn-primary pull-right cadastroprodfalhado" data-toggle="modal"><i class="fa fa-plus-circle"></i></button>*@
+                        <div class="col-xs-2">&nbsp;</div>
+                        <div class="col-xs-2">&nbsp;</div>
+                        <div class="col-xs-2">&nbsp;</div>
+                        <div class="col-xs-2">&nbsp;</div>
+                        <div class="col-xs-2">&nbsp;</div>
+                        <div class="col-xs-2">
+                            @if (@ViewBag.EstadoControles != "disabled")
+                            {
+
+                                <i class='fa fa-plus-circle icon-xs icon-rounded icon-primary inviewport animated animated-delay-400ms  cadastroprodfalhado button-cursor' data-vp-add-class='visible rotateIn'></i>
+                            }
+                           
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Partial("_ProdutosFalhados")
+                    </div>
+
+
+                </div>
+            </section>
+        </div>
+
+
+        <div class="col-lg-12">
+            <section class="pull-right">
+
+                @using (Html.BeginForm("EnviarDadosComplementares", "CadastroPecasEqpto",
+                    FormMethod.Post, new { enctype = "multipart/form-data", role = "form", id = "frmListaPecasEquipamentos", @class = "form-horizontal" }))
+                {   @Html.AntiForgeryToken()
+
+                    <button type="submit" class="btn btn-success btn-icon bottom15 right15">
+                        <i class="fa fa-arrow-circle-right"></i> &nbsp; <span>Avançar</span>
+                    </button>
+
+                }
+            </section>
+        </div>
+    </section>
+</section>

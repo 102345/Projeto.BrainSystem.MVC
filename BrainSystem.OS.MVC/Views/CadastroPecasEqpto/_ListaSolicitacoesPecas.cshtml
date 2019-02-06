@@ -1,0 +1,73 @@
+﻿@*@model IEnumerable<BrainSystem.OS.MVC.ViewModels.SolicitacoesPecasViewModel>*@
+
+@{
+    
+
+    var viewDataSolicitacoesPecas = Session["solicitacoespecasViewModel"] as List<BrainSystem.OS.MVC.ViewModels.SolicitacoesPecasViewModel>;
+
+}
+
+
+@Styles.Render("~/bundles/assets/datatable")
+
+<div class="col-xs-12">
+
+    <div class="table-responsive" data-pattern="priority-columns">
+        <table id="tblSolicitacoesPecas" class="table table-small-font table-hover-custom dt-responsive display">
+
+
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th style="display:none">IdProdutoFalhado</th>
+                    <th>Código</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+                @foreach (var item in viewDataSolicitacoesPecas)
+                {
+                    <tr>
+                        @if (@ViewBag.EstadoControles != "disabled")
+                        {
+                            <td class="table-row" data-href="/CadastroPecasEqpto/DeleteSolicitacaoPeca/@item.Id">
+                                <i class="fa fa-trash"></i>
+                            </td>
+
+
+                        }
+                        else
+                        {
+
+                            <td></td>
+
+                        }
+
+                        <td style="display:none">@Html.DisplayFor(modelItem => item.IdProdutoFalhado)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdProduto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+                    </tr>
+
+
+                }
+
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div role="dialog" tabindex="-1" id="modCadastroSolicitacoesPecas" class="modal fade">
+
+    </div>
+
+
+</div>
+
+@Scripts.Render("~/bundles/assets/datatable")

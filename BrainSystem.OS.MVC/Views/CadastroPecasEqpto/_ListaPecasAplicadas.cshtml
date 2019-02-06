@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<BrainSystem.OS.MVC.ViewModels.PecasAplicadasViewModel>
+
+
+@Styles.Render("~/bundles/assets/datatable")
+
+<div class="col-xs-12">
+
+    <div class="table-responsive" data-pattern="priority-columns">
+        <table id="tblPecaAplicadas" class="table table-small-font table-hover-custom dt-responsive display">
+
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th style="display:none">@Html.DisplayNameFor(model => model.IdProdutoFalhado)</th>
+                    <th>@Html.DisplayNameFor(model => model.IdProduto)</th>
+                    <th>@Html.DisplayNameFor(model => model.Produto)</th>
+                    <th>@Html.DisplayNameFor(model => model.NumeroSerie)</th>
+                    <th>@Html.DisplayNameFor(model => model.Quantidade)</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        @if (@ViewBag.EstadoControles != "disabled")
+                        {
+                            <td class="table-row" data-href="/CadastroPecasEqpto/Delete/@item.Id">
+                                <i class="fa fa-trash"></i>
+                            </td>
+                        }
+                        else
+                        {
+
+                            <td></td>
+
+                        }
+                       
+                        <td style="display:none">@Html.DisplayFor(modelItem => item.IdProdutoFalhado)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IdProduto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Produto)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NumeroSerie)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+                    </tr>
+
+
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div role="dialog" tabindex="-1" id="modCadastroPecasAplicadas" class="modal fade">
+
+    </div>
+
+
+</div>
+
+@Scripts.Render("~/bundles/assets/datatable")

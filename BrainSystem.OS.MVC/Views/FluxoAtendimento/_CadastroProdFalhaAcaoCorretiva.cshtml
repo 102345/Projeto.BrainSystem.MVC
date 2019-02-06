@@ -1,0 +1,5 @@
+﻿@model BrainSystem.OS.MVC.ViewModels.ProdutosFalhadosViewModel
+
+<label for="cboAcaoCorretiva" class="form-label">Ação Corretiva</label>
+@Html.DropDownListFor(model => model.IdAcaoCorretiva, Model.AcoesCorretivas, new { @class = "form-control m-bot15", @id="cboAcaoCorretiva" })
+       

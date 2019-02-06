@@ -1,0 +1,156 @@
+﻿@model BrainSystem.OS.MVC.ViewModels.OrdemServicoViewModel
+<section id="main-content" class=" ">
+    <section class="wrapper" style='margin-top:60px;display:inline-block;width:100%;padding:15px 0 0 15px;'>
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class="page-title">
+                Atendimento
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Dados OS</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        <div class="col-xs-2">@Html.DisplayNameFor(model => model.IdOrdemServico)</div>
+                        <div class="col-xs-2">@Html.DisplayFor(model => model.IdOrdemServico)</div>
+                        <div class="col-xs-2">@Html.DisplayNameFor(model => model.DataChamado)</div>
+                        <div class="col-xs-2">@Html.DisplayFor(model => model.DataChamado)</div>
+                        <div class="col-xs-2">@Html.DisplayNameFor(model => model.NumeroChamado)</div>
+                        <div class="col-xs-2">@Html.DisplayFor(model => model.NumeroChamado)</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Solicitante</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                    <div class="row">
+                        @Html.Partial("_Solicitante")
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-lg-12">
+            <section class="box">
+                <header class="panel_header">
+                    <h1 class="title pull-left">Período Atendimento</h1>
+                    <div class="actions panel_actions pull-right">
+                        <a class="box_toggle fa fa-chevron-down"></a>
+                    </div>
+                </header>
+                <div class="content-body">
+                   
+                    @using (Html.BeginForm("EnviarPasso2", "OrdemServico", FormMethod.Post, new { enctype = "multipart/form-data", role = "form", id = "frmPeriodoAtendimento", @class = "form-horizontal"}))
+                    {   @Html.AntiForgeryToken()
+                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                        @Html.HiddenFor(model => model.IdOrdemServico)
+                        @Html.HiddenFor(model => model.DataChamado)
+                        @Html.HiddenFor(model => model.NumeroChamado)
+                        @Html.HiddenFor(model => model.NomeTecnico)
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="row form-group">
+                                    <div class="col-xs-6">
+                                        <label class="form-label">@Html.DisplayNameFor(model => model.NomeTecnico)</label>
+                                        <div class="controls">
+                                            <label class="form-label">@Html.DisplayFor(model => model.NomeTecnico)</label>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="form-label">@Html.DisplayNameFor(model => model.DataPreenchimento)</label>
+                                        <div class="input-group primary">
+                                            <input type="text" id="DataPreenchimento" name="DataPreenchimento" class="form-control datepicker" @Model.EstadoControles  value=@Model.DataPreenchimento>
+                                            @if(@Model.EstadoControles != "disabled")
+                                            {
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+                                            }
+
+                                            @*@Html.ValidationMessageFor(model => model.DataPreenchimento, "", new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                   
+                                    <div class="col-xs-3">
+                                        <label class="form-label">@Html.DisplayNameFor(model => model.HoraChegada)</label>
+                                        <div class="input-group primary">
+                                            <input type="text" id="HoraChegada" name="HoraChegada" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-show-meridian="false" data-minute-step="1" data-second-step="5"  @Model.EstadoControles value=@Model.HoraChegada>
+                                            @if(@Model.EstadoControles != "disabled")
+                                            {
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            }
+                                        </div>
+                                     </div>
+                                    <div class="col-xs-3">
+                                        <label class="form-label">@Html.DisplayNameFor(model => model.HoraInicio)</label>
+                                        <div class="input-group primary">
+                                            <input type="text" id="HoraInicio" name="HoraInicio" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-show-meridian="false" data-minute-step="1" data-second-step="5"  @Model.EstadoControles value=@Model.HoraInicio>
+                                            @if (@Model.EstadoControles != "disabled")
+                                            {
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            }
+                                         </div>
+                                     </div>
+                                    <div class="col-xs-3">
+                                        <label class="form-label">@Html.DisplayNameFor(model => model.HoraTermino)</label>
+                                        <div class="input-group primary">
+                                            <input type="text" id="HoraTermino" name="HoraTermino" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-show-meridian="false" data-minute-step="1" data-second-step="5"  @Model.EstadoControles value=@Model.HoraTermino>
+                                            @if (@Model.EstadoControles != "disabled")
+                                            {
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            }
+                                        </div>
+                                     </div>
+                                    <div class="col-xs-3">
+                                        <label class="form-label">@Html.DisplayNameFor(model => model.HoraSaida)</label>
+                                        <div class="input-group primary">
+                                            <input type="text" id="HoraSaida" name="HoraSaida" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-show-meridian="false" data-minute-step="1" data-second-step="5"  @Model.EstadoControles value=@Model.HoraSaida>
+                                            @if (@Model.EstadoControles != "disabled")
+                                            {
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success btn-icon bottom15 right15">
+                                        <i class="fa fa-arrow-circle-right"></i> &nbsp; <span>Avançar</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                  
+                    }
+                </div>
+            </section>
+        </div>
+
+    </section>
+ </section>

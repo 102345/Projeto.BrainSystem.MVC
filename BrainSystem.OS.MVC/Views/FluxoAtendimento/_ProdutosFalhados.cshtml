@@ -1,0 +1,87 @@
+﻿
+@model IEnumerable<BrainSystem.OS.MVC.ViewModels.ProdutosFalhadosViewModel>
+
+@*<link href="~/assets/plugins/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="~/assets/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="~/assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="~/assets/plugins/datatables/extensions/Responsive/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" type="text/css" media="screen" />*@
+
+@Styles.Render("~/bundles/assets/datatable")
+
+<div class="col-xs-12">
+
+    <div class="table-responsive" data-pattern="priority-columns">
+        <table id="tblProdutosFalhados" class="table table-small-font table-hover-custom dt-responsive display">
+
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>@Html.DisplayNameFor(model => model.IdProduto)</th>
+                    <th>@Html.DisplayNameFor(model => model.Produto)</th>
+                    <th>@Html.DisplayNameFor(model => model.NumeroSerie)</th>
+                    <th>@Html.DisplayNameFor(model => model.Localizacao)</th>
+                    <th>@Html.DisplayNameFor(model => model.DetalhamentoFalha)</th>
+                    <th>@Html.DisplayNameFor(model => model.AcaoCorretiva)</th>
+                    <th>@Html.DisplayNameFor(model => model.SolucaoAdotada)</th>
+                    <th>@Html.DisplayNameFor(model => model.StatusFuncionamento)</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        @if (@ViewBag.EstadoControles != "disabled")
+                        {
+                            <td class="table-row" data-href="/FluxoAtendimento/Delete/@item.IdProdutoFalhado">
+                                <i class="fa fa-trash"></i>
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+
+                        }
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.IdProduto)</td>
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.Produto)</td>
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.NumeroSerie)</td>
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.Localizacao)</td>
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.DetalhamentoFalha)</td>
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.AcaoCorretiva)</td>
+                        <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado">@Html.DisplayFor(modelItem => item.SolucaoAdotada)</td>
+                        @if (@item.StatusFuncionamento == true)
+                        {
+                            <td class="table-row" data-href="/FluxoAtendimento/ExibirCadastrosPecasEqpto/@item.IdProdutoFalhado"><i class="fa fa-check-circle"></i></td>
+
+                        }
+                        else
+                        {
+                            <td></td>
+
+                        }
+
+                    </tr>
+
+
+            }
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div role="dialog" tabindex="-1" id="modCadastroProdutosFalhados" class="modal fade">
+
+    </div>
+    
+
+</div>
+
+@Scripts.Render("~/bundles/assets/datatable")
+
+@*<script src="~/assets/plugins/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="~/assets/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+<script src="~/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<script src="~/assets/plugins/datatables/extensions/Responsive/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+
+<script src="~/assets/plugins/responsive-tables/js/rwd-table.min.js" type="text/javascript"></script>*@

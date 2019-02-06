@@ -1,0 +1,16 @@
+﻿.sigPad {
+    width: 605px; /* Change the width */
+    
+}
+.sigWrapper {
+    width: 580px;
+    height: 100px;
+    position: relative;
+}
+@media print
+{
+    .sigWrapper
+    {
+        border: 0px none black !important;
+    }
+}

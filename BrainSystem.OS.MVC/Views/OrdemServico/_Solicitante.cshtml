@@ -1,0 +1,42 @@
+﻿@using BrainSystem.OS.Domain.Entities;
+
+
+@{
+
+    var viewDataCliente = Session["cliente"] as Cliente;
+    var viewDataGrupo = Session["grupo"] as Grupo;
+    var viewDataEndereco = Session["endereco"] as Endereco;
+    var viewDataResponsavel = Session["responsavel"] as Funcionario;
+}
+
+@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-xs-6">@Html.DisplayFor(viewCliente => viewDataCliente.NomeFantasia)</div>
+    <div class="col-xs-6">@Html.DisplayFor(viewCliente => viewDataCliente.RazaoSocial)</div>
+</div>
+<div class="row">
+    <div class="col-xs-6">@Html.DisplayFor(viewCliente => viewDataCliente.CNPJ)</div>
+    <div class="col-xs-6">@Html.DisplayFor(viewGrupo => viewDataGrupo.Descricao)</div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.Logradouro)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.Numero)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.Complemento)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.Bairro)</div>
+</div>
+<div class="row">
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.Cidade)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.UF)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewEndereco => viewDataEndereco.CEP)</div>
+    <div class="col-xs-3">&nbsp;</div>
+</div>
+<div class="row">
+    <div class="col-xs-3">@Html.DisplayFor(viewResponsavel => viewDataResponsavel.Nome)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewResponsavel => viewDataResponsavel.Telefone)</div>
+    <div class="col-xs-3">@Html.DisplayFor(viewResponsavel => viewDataResponsavel.Email)</div>
+    <div class="col-xs-3">&nbsp;</div>
+</div>
